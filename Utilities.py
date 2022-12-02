@@ -17,7 +17,7 @@ def get_inliers_ratio(desc1,desc2,ratio):
     for m in matches:
         if((m[0].distance/m[1].distance)<ratio):
             inliers.append(m[0])
-    return inliers,0.012
+    return inliers
 
 def get_inliers_crossCheck(desc1,desc2):
     match1= bf.match(desc1,desc2)
@@ -27,7 +27,7 @@ def get_inliers_crossCheck(desc1,desc2):
         for matc2 in match2:
             if matc2.queryIdx == matc1.trainIdx and matc1.queryIdx==matc2.trainIdx:
                 inliers.append(matc1)
-    return inliers,0.37
+    return inliers
 def Draw_matches(imgA,imgB,kpsA,kpsB,matches,similarity,bool):
     img3 = cv2.drawMatches(imgA, kpsA,
                            imgB, kpsB,
